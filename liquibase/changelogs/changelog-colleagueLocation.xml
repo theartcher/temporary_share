@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+	<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+		<changeSet id="1.0.2" author="Jasper">
+			<createTable tableName="colleague_location">
+				<column name="id" type="uuid">
+					<constraints primaryKey="true" nullable="false"/>
+				</column>
+
+				<column name="colleague_id" type="uuid">
+					<constraints nullable="false" foreignKeyName="fk_colleague" references="colleague(id)"/>
+				</column>
+				<column name="network_id" type="varchar(256)">
+					<constraints nullable="true" unique="true"/>
+				</column>
+				<column name="last_updated" type="datetime">
+					<constraints nullable="false"/>
+				</column>
+
+				<column name="is_working" type="boolean"/>
+				<column name="is_in_meeting" type="boolean"/>
+				<column name="is_working_remote" type="boolean"/>
+				<column name="is_busy" type="boolean"/>
+				
+				<column name="notes" type="varchar(256)"/>
+			</createTable>
+		</changeSet>
+	</databaseChangeLog>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+	<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+		<changeSet id="1.0.3" author="Jasper">
+			<createTable tableName="colleague_consent">
+				<column name="id" type="uuid">
+					<constraints primaryKey="true" nullable="false"/>
+				</column>
+
+				<column name="colleague_id" type="uuid">
+					<constraints nullable="false" foreignKeyName="fk_colleague" references="colleague(id)"/>
+				</column>
+				
+				<column name="is_cisco_allowed" type="boolean">
+					<constraints nullable="false"/>
+				</column>
+				<column name="is_office_allowed" type="boolean">
+					<constraints nullable="false"/>
+				</column>
+			</createTable>
+		</changeSet>
+	</databaseChangeLog>
